@@ -140,8 +140,6 @@ public class GoSellSdKDelegate implements PluginRegistry.ActivityResultListener,
         // initiate PaymentDataSource
         sdkSession.instantiatePaymentDataSource(); // ** Required **
 
-        sdkSession.setGooglePayWalletMode(DeserializationUtil.getGPayWalletMode(sessionParameters.get("googlePayWalletMode").toString()));//** Required ** For setting GooglePAY Environment
-
         // sdk mode
         sdkSession.setTransactionMode(
                 DeserializationUtil.getTransactionMode(sessionParameters.get("trxMode").toString()));
@@ -163,10 +161,6 @@ public class GoSellSdKDelegate implements PluginRegistry.ActivityResultListener,
 
         sdkSession.setTransactionCurrency(transactionCurrency); // ** Required **
 
-        if (sessionParameters.get("appearanceMode") != null) {
-            ThemeObject.getInstance()
-                    .setAppearanceMode(DeserializationUtil.getAppearanceMode(sessionParameters.get("appearanceMode").toString()));
-        } else {
             if (sessionParameters.get("trxMode").toString().equals("TransactionMode.SAVE_CARD") ||
                     sessionParameters.get("trxMode").toString().equals("TransactionMode.TOKENIZE_CARD")) {
                 ThemeObject.getInstance()
@@ -175,7 +169,7 @@ public class GoSellSdKDelegate implements PluginRegistry.ActivityResultListener,
                 ThemeObject.getInstance()
                         .setAppearanceMode(AppearanceMode.FULLSCREEN_MODE);
             }
-        }
+        
 
 
         // Using static CustomerBuilder method available inside TAP Customer Class you
