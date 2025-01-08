@@ -412,6 +412,11 @@ public class GoSellSdKDelegate implements PluginRegistry.ActivityResultListener,
     @Override
     public void savedCardsList(@NonNull CardsList cardsList) {
     }
+        
+    @Override
+    public void googlePayFailed(String error) {
+        sendGooglePayError(error);
+    }
 
     @Override
     public void sdkError(@Nullable GoSellError goSellError) {
