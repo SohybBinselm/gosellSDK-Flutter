@@ -25,7 +25,6 @@ import company.tap.gosellapi.internal.api.models.Token;
 import company.tap.gosellapi.open.controllers.SDKSession;
 import company.tap.gosellapi.open.controllers.ThemeObject;
 import company.tap.gosellapi.open.delegate.SessionDelegate;
-import company.tap.gosellapi.open.enums.AppearanceMode;
 import company.tap.gosellapi.open.exception.CurrencyException;
 import company.tap.gosellapi.open.models.CardsList;
 import company.tap.gosellapi.open.models.TapCurrency;
@@ -160,16 +159,6 @@ public class GoSellSdKDelegate implements PluginRegistry.ActivityResultListener,
         }
 
         sdkSession.setTransactionCurrency(transactionCurrency); // ** Required **
-
-            if (sessionParameters.get("trxMode").toString().equals("TransactionMode.SAVE_CARD") ||
-                    sessionParameters.get("trxMode").toString().equals("TransactionMode.TOKENIZE_CARD")) {
-                ThemeObject.getInstance()
-                        .setAppearanceMode(AppearanceMode.WINDOWED_MODE);
-            } else {
-                ThemeObject.getInstance()
-                        .setAppearanceMode(AppearanceMode.FULLSCREEN_MODE);
-            }
-        
 
 
         // Using static CustomerBuilder method available inside TAP Customer Class you
